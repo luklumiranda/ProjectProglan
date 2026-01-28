@@ -1,263 +1,174 @@
-# Sistem Login dengan PHP dan MySQL
+# Website Hotel Paradise
 
-Sistem login dan registrasi lengkap dengan PHP, MySQL, dan Bootstrap-style CSS.
+Website booking hotel sederhana yang dibuat dengan PHP dan MySQL.
 
-## 📋 Fitur
+## Apa aja yang ada di sini?
 
-- ✅ Registrasi user dengan validasi
-- ✅ Login dengan email atau username
-- ✅ Password hashing menggunakan bcrypt
-- ✅ Session management
-- ✅ Remember me functionality
-- ✅ Dashboard setelah login
-- ✅ Logout system
-- ✅ Error handling dan validation
-- ✅ Responsive design
-- ✅ SQL Injection protection
+- Login dan daftar akun
+- Lihat halaman hotel dengan pilihan kamar
+- Booking kamar hotel
+- Dashboard user
 
-## 📁 Struktur File
+## Yang perlu disiapkan
+
+- XAMPP (buat jalanin PHP dan MySQL)
+- Browser (Chrome, Firefox, atau apapun)
+- Text editor kalau mau edit kode (VS Code, Notepad++, dll)
+
+## Cara install
+
+### 1. Install XAMPP
+
+Download XAMPP dari website resminya, terus install. Gampang kok, tinggal next-next doang.
+
+### 2. Setup database
+
+- Buka XAMPP Control Panel
+- Klik Start di Apache sama MySQL
+- Buka browser, ketik `localhost/phpmyadmin`
+- Bikin database baru namanya `user_login_system`
+- Klik database yang baru dibuat
+- Pilih tab SQL
+- Copy semua isi file `database.sql` yang ada di folder ini
+- Paste ke kotak SQL, terus klik Go
+
+### 3. Taruh file website
+
+Copy semua file PHP dari folder ini ke:
+```
+C:\xampp\htdocs\ProjectProglan\
+```
+
+Atau kalau mau nama folder lain juga boleh, terserah.
+
+### 4. Buka websitenya
+
+Buka browser, ketik:
+```
+http://localhost/ProjectProglan/login.php
+```
+
+Selesai! Website udah bisa dipake.
+
+## Akun untuk testing
+
+Kalau udah import database, bisa langsung login pake:
+- Username: `admin`
+- Password: `password123`
+
+Atau bisa juga daftar akun baru.
+
+## Struktur file
 
 ```
-project/
-│
-├── config.php              # Konfigurasi database dan fungsi helper
-├── database.sql            # SQL untuk setup database
-│
-├── login.php               # Halaman login
-├── login_process.php       # Proses login
-│
-├── register.php            # Halaman registrasi
-├── register_process.php    # Proses registrasi
-│
-├── dashboard.php           # Halaman dashboard (after login)
-├── logout.php              # Proses logout
-│
-└── README.md              # Dokumentasi
+ProjectProglan/
+├── config.php                 # Setting database
+├── database.sql              # File SQL buat database
+├── login.php                 # Halaman login
+├── login_process.php         # Proses login
+├── register.php              # Halaman daftar
+├── register_process.php      # Proses daftar
+├── home.php                  # Homepage hotel
+├── booking.php               # Halaman booking
+├── booking_process.php       # Proses booking
+├── booking_success.php       # Konfirmasi booking berhasil
+├── dashboard.php             # Dashboard user
+└── logout.php                # Logout
 ```
 
-## 🔧 Persyaratan Sistem
+## Fitur website
 
-- PHP 7.4 atau lebih tinggi
-- MySQL 5.7 atau lebih tinggi / MariaDB
-- Web Server (Apache/Nginx) atau XAMPP/WAMP/MAMP
-- Browser modern
+### Halaman login & register
+- Login pake email atau username
+- Daftar akun baru
+- Ada validasi password minimal 8 karakter
+- Password otomatis di-enkripsi
 
-## 📥 Instalasi
+### Homepage hotel
+- Info tentang hotel
+- Fasilitas hotel (kolam renang, gym, spa, dll)
+- 3 pilihan kamar:
+  - Standard Room - 500rb/malam
+  - Deluxe Room - 850rb/malam
+  - Suite Room - 1.5jt/malam
 
-### 1. Install XAMPP (untuk Windows)
+### Booking
+- Pilih tanggal check-in dan check-out
+- Pilih jumlah tamu
+- Bisa kasih catatan khusus
+- Otomatis hitung total harga
+- Dapat kode booking
 
-Download dan install XAMPP dari: https://www.apachefriends.org/
+## Kalo ada masalah
 
-### 2. Setup Database
+### Website gak kebuka / Not Found
+- Cek Apache di XAMPP udah di-start belum
+- Pastiin file ada di folder `htdocs`
+- Cek lagi URL-nya, pastiin bener
 
-1. Jalankan XAMPP Control Panel
-2. Start Apache dan MySQL
-3. Buka phpMyAdmin di browser: `http://localhost/phpmyadmin`
-4. Buat database baru dengan nama `user_login_system`
-5. Import file `database.sql`:
-   - Klik database `user_login_system`
-   - Klik tab "SQL"
-   - Copy-paste isi file `database.sql` atau gunakan "Import"
-   - Klik "Go" atau "Execute"
+### Error database / MySQL
+- Cek MySQL di XAMPP udah jalan belum
+- Pastiin database `user_login_system` udah dibuat
+- Coba import ulang file `database.sql`
 
-### 3. Konfigurasi File
+### Halaman blank
+- Buka file `C:\xampp\apache\logs\error.log` buat liat error-nya apa
+- Biasanya gara-gara ada typo di kode
 
-1. Copy semua file PHP ke folder `htdocs/login-system/` (untuk XAMPP)
-   - Lokasi default XAMPP: `C:\xampp\htdocs\login-system\`
+## Mau edit konfigurasi database?
 
-2. Edit file `config.php` jika perlu (sesuaikan dengan konfigurasi database Anda):
-   ```php
-   define('DB_HOST', 'localhost');
-   define('DB_USER', 'root');
-   define('DB_PASS', '');  // Password MySQL (kosong untuk default XAMPP)
-   define('DB_NAME', 'user_login_system');
-   ```
+Buka file `config.php`, terus ubah bagian ini sesuai settingan MySQL kamu:
 
-### 4. Jalankan Aplikasi
-
-Buka browser dan akses: `http://localhost/login-system/login.php`
-
-## 👤 User Testing
-
-Setelah import database, Anda bisa login dengan:
-- **Username**: admin
-- **Email**: admin@example.com
-- **Password**: password123
-
-## 🚀 Cara Menggunakan
-
-### Registrasi User Baru
-
-1. Buka `http://localhost/login-system/register.php`
-2. Isi form registrasi:
-   - Nama Depan
-   - Nama Belakang
-   - Email (harus unik)
-   - Username (minimal 4 karakter, harus unik)
-   - Password (minimal 8 karakter)
-   - Konfirmasi Password
-3. Centang "Syarat & Ketentuan"
-4. Klik "Daftar Sekarang"
-5. Jika berhasil, akan redirect ke halaman login
-
-### Login
-
-1. Buka `http://localhost/login-system/login.php`
-2. Masukkan email/username dan password
-3. (Opsional) Centang "Ingat saya" untuk remember me
-4. Klik "Masuk"
-5. Jika berhasil, akan redirect ke dashboard
-
-### Dashboard
-
-Setelah login berhasil, Anda akan melihat:
-- Informasi akun (nama, username, email)
-- Status akun
-- Statistik (total login, member sejak, last login)
-- Tombol logout
-
-### Logout
-
-1. Klik tombol "Logout" di dashboard
-2. Session akan dihapus
-3. Redirect ke halaman login
-
-## 🔒 Fitur Keamanan
-
-### 1. Password Hashing
 ```php
-// Password di-hash menggunakan bcrypt
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-// Verifikasi password
-password_verify($password, $hashed_password);
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'user_login_system');
 ```
 
-### 2. SQL Injection Prevention
-```php
-// Input dibersihkan menggunakan mysqli_real_escape_string
-$username = mysqli_real_escape_string($conn, $_POST['username']);
-```
+Biasanya sih gak perlu diubah kalo pake XAMPP default.
 
-### 3. Session Management
-```php
-// Cek apakah user sudah login
-if (!is_logged_in()) {
-    redirect('login.php');
-}
-```
+## Catatan penting
 
-### 4. Input Validation
-- Email format validation
-- Password strength checking
-- Username uniqueness check
-- Required fields validation
+- Password user otomatis di-encrypt, jadi aman
+- Jangan lupa backup database secara berkala
+- Kalo mau dipake beneran (production), perlu setup SSL/HTTPS
+- Ini masih versi sederhana, jadi belum ada payment gateway atau email notifikasi
 
-## 📊 Struktur Database
+## Database
 
-### Tabel: users
+Tabel `users` isinya:
+- id
+- first_name
+- last_name  
+- username
+- email
+- password (udah di-hash)
+- created_at
+- updated_at
+- last_login
+- status
 
-| Field       | Type         | Keterangan                    |
-|-------------|--------------|-------------------------------|
-| id          | INT(11)      | Primary Key, Auto Increment   |
-| first_name  | VARCHAR(50)  | Nama depan                    |
-| last_name   | VARCHAR(50)  | Nama belakang                 |
-| username    | VARCHAR(50)  | Username (unique)             |
-| email       | VARCHAR(100) | Email (unique)                |
-| password    | VARCHAR(255) | Password (hashed)             |
-| created_at  | TIMESTAMP    | Waktu registrasi              |
-| updated_at  | TIMESTAMP    | Waktu update terakhir         |
-| last_login  | TIMESTAMP    | Waktu login terakhir          |
-| status      | ENUM         | Status akun (active/inactive) |
+Booking masih disimpen di session, belum masuk database. Kalo mau lebih lengkap, bisa tambahin tabel booking sendiri.
 
-## 🛠️ Troubleshooting
+## Kalo mau dikembangin
 
-### Error: "Connection refused" atau "Can't connect to MySQL"
-**Solusi**: 
-- Pastikan MySQL sudah berjalan di XAMPP
-- Cek username dan password di `config.php`
+Beberapa ide fitur tambahan:
+- Simpan booking ke database (bikin tabel booking)
+- Kirim email konfirmasi booking
+- Payment gateway
+- Admin panel buat kelola kamar
+- Upload foto kamar
+- Review & rating
+- Cari kamar berdasarkan tanggal
 
-### Error: "Table 'users' doesn't exist"
-**Solusi**: 
-- Import file `database.sql` di phpMyAdmin
-- Pastikan database `user_login_system` sudah dibuat
+Tapi buat pembelajaran, yang sekarang udah cukup kok.
 
-### Halaman blank atau error 500
-**Solusi**: 
-- Cek PHP error log di `C:\xampp\apache\logs\error.log`
-- Pastikan semua file PHP berada di folder yang benar
-- Cek apakah PHP extension MySQLi sudah aktif di `php.ini`
+## Lisensi
 
-### Session tidak tersimpan
-**Solusi**: 
-- Pastikan `session_start()` dipanggil di awal setiap file
-- Cek permission folder session di server
-
-## 🔄 Upgrade & Pengembangan
-
-### Fitur yang Bisa Ditambahkan:
-
-1. **Forgot Password**
-   - Email reset password
-   - Token verification
-
-2. **Email Verification**
-   - Send verification email saat registrasi
-   - Verify email sebelum login
-
-3. **Role Management**
-   - Admin, User, Moderator roles
-   - Permission system
-
-4. **Profile Management**
-   - Edit profile
-   - Change password
-   - Upload avatar
-
-5. **Two-Factor Authentication (2FA)**
-   - Google Authenticator
-   - SMS verification
-
-6. **Social Login**
-   - Google OAuth
-   - Facebook Login
-
-7. **Activity Log**
-   - Track user activity
-   - Login history
-
-## 📞 Support
-
-Jika ada masalah atau pertanyaan:
-1. Cek bagian Troubleshooting
-2. Periksa PHP error log
-3. Pastikan semua konfigurasi sudah benar
-
-## 📝 Lisensi
-
-Free to use untuk pembelajaran dan proyek pribadi.
-
-## 🎯 Tips Pengembangan
-
-1. **Selalu gunakan prepared statements** untuk query database yang lebih aman
-2. **Implementasi HTTPS** untuk production
-3. **Gunakan environment variables** untuk konfigurasi sensitif
-4. **Backup database** secara berkala
-5. **Implementasi rate limiting** untuk prevent brute force attack
-6. **Gunakan CSRF token** untuk form security
-
-## ✅ Checklist Deploy ke Production
-
-- [ ] Ganti password database
-- [ ] Aktifkan HTTPS
-- [ ] Set error_reporting ke 0
-- [ ] Gunakan prepared statements
-- [ ] Implementasi CSRF protection
-- [ ] Set session cookie secure flag
-- [ ] Backup database
-- [ ] Test semua fitur
-- [ ] Set proper file permissions
+Bebas dipake buat belajar atau proyek pribadi. Kalo mau dikembangin lagi juga boleh.
 
 ---
 
-**Dibuat dengan ❤️ menggunakan PHP dan MySQL**
+Dibuat pake PHP, MySQL, sama sedikit JavaScript.
+Semoga membantu!
