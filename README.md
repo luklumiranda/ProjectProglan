@@ -19,7 +19,7 @@ Website booking hotel sederhana yang dibuat dengan PHP dan MySQL.
 
 ### 1. Install XAMPP
 
-Download XAMPP dari website resminya, terus install. Gampang kok, tinggal next-next doang.
+Download XAMPP dari website resminya, terus install
 
 ### 2. Setup database
 
@@ -48,7 +48,6 @@ Buka browser, ketik:
 http://localhost/ProjectProglan/login.php
 ```
 
-Selesai! Website udah bisa dipake.
 
 ## Akun untuk testing
 
@@ -113,7 +112,6 @@ ProjectProglan/
 
 ### Halaman blank
 - Buka file `C:\xampp\apache\logs\error.log` buat liat error-nya apa
-- Biasanya gara-gara ada typo di kode
 
 ## Mau edit konfigurasi database?
 
@@ -125,8 +123,6 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'user_login_system');
 ```
-
-Biasanya sih gak perlu diubah kalo pake XAMPP default.
 
 ## Catatan penting
 
